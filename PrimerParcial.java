@@ -1,0 +1,68 @@
+public class PrimerParcial {
+    public static void main(String[] args) {
+if (args.length == 0) {
+    System.out.println("POrfa ingrese un valor");
+    return;
+}
+String input = args[0];
+validartipo.analizarycontener(input);
+    }
+}
+class contenervalor<T> {
+    private T valor;
+    public contenervalor(T valor) {
+        this.valor = valor;
+}
+public T getValor() {
+    return valor;
+}
+public String getTipo() {
+    return valor.getClass().getSimpleName();
+}
+
+    public void setValor(T valor) {
+        this.valor = valor;
+    }
+}
+class validartipo {
+    public static void analizarycontener(String input) {
+        try {
+            int valInt = Integer.parseInt(input);
+            @SuppressWarnings("unused")
+            contenervalor<Integer> contenedor = new contenervalor<>(valInt);
+            System.out.println("ingresaste un entero ");
+            return;
+
+        } catch (NumberFormatException e) {
+
+        }
+        if (input.toLowerCase(). endsWith("f")) {
+            try {
+                float valFloat = Float.parseFloat(input.substring(0, input.length() - 1));
+                @SuppressWarnings("unused")
+                contenervalor<Float> contenedor = new contenervalor<>(valFloat);
+                System.out.println("ingresaste un float");
+                return;
+            } catch (NumberFormatException e) {
+               
+            }
+        }
+        try {
+            double valDouble = Double.parseDouble(input);
+            @SuppressWarnings("unused")
+            contenervalor<Double> contenedor = new contenervalor<>(valDouble);
+            System.out.println("ingresaste un double");
+            return;
+        } catch (NumberFormatException e) {
+        }
+        if (input.length() == 1) {
+            @SuppressWarnings("unused")
+            contenervalor<Character> contenedor = new contenervalor<>(input.charAt(0));
+            System.out.println("ingresaste un char");
+            return;
+        }
+        @SuppressWarnings("unused")
+        contenervalor<String> contenedor = new contenervalor<>(input);
+        System.out.println("ingresaste un String");
+    }
+}
